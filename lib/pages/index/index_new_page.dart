@@ -436,7 +436,7 @@ class _IndexNewPageState extends State<IndexNewPage> with BasePageMixin<IndexNew
                                 delayBefore: const Duration(seconds: 2),
                                 numberOfReps: 2,
                                 pauseBetween: const Duration(seconds: 1),
-                                style: const TextStyle(color: Colors.indigoAccent),
+                                style: TextStyle(color: notificationColor[notification.bColor!]),
                                 textAlign: TextAlign.right,
                                 selectable: true,
                               )),
