@@ -100,8 +100,8 @@ class BorrowDetailDataPeriods {
   int? iExpectServiceFee;
   @JSONField(name: "j_expect_violate_fee")
   int? jExpectViolateFee;
-  @JSONField(name: "k_expect_overdue_fee")
-  int? kExpectOverdueFee;
+  @JSONField(name: "k_expect_overdue_amount")
+  int? kExpectOverdueAmount;
   @JSONField(name: "n_paid_amount")
   int? nPaidAmount;
   @JSONField(name: "o_paid_borrow_amount")

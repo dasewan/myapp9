@@ -75,7 +75,8 @@ class _SplashPageState extends State<SplashPage> {
         if (accessToken.isNotEmpty) {
           NavigatorUtils.push(context, Routes.home, clearStack: true);
         } else {
-          _goLogin();
+          NavigatorUtils.push(context, Routes.home, clearStack: true);
+          // _goLogin();
         }
       }
     });

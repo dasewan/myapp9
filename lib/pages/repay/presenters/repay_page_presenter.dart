@@ -46,15 +46,16 @@ class RepayPagePresenter extends BasePagePresenter<RepayIMvpView> {
             if (duePeriods[i].lOverdueDays! > 0) {
               initialSelected[i] = true;
               initialSelectedCount++;
-              initialSelectedAmount += duePeriods[i].fExpectRepayTotalAmount!;
+              final int periodShouldRepayAmount = duePeriods[i].fExpectRepayTotalAmount! - duePeriods[i].pPaidInterest! - duePeriods[i].qPaidServiceFee! - duePeriods[i].sPaidOverdueAmount! - duePeriods[i].oPaidBorrowAmount!;
+              initialSelectedAmount += periodShouldRepayAmount;
               initialSelectedIds.add(duePeriods[i].id!);
             }
           }
           if (initialSelectedCount == 0) {
             initialSelected[0] = true;
             initialSelectedCount = 1;
-            int _periodShouldRepayAmount = duePeriods[0].fExpectRepayTotalAmount! - duePeriods[0].pPaidInterest! - duePeriods[0].qPaidServiceFee! - duePeriods[0].sPaidOverdueAmount! - duePeriods[0].oPaidBorrowAmount!;
-            initialSelectedAmount += _periodShouldRepayAmount;
+            final int periodShouldRepayAmount = duePeriods[0].fExpectRepayTotalAmount! - duePeriods[0].pPaidInterest! - duePeriods[0].qPaidServiceFee! - duePeriods[0].sPaidOverdueAmount! - duePeriods[0].oPaidBorrowAmount!;
+            initialSelectedAmount += periodShouldRepayAmount;
             initialSelectedIds.add(duePeriods[0].id!);
           }
           view.setInitial(initialSelected, initialSelectedCount, initialSelectedAmount, initialSelectedIds, data.data!.borrow!.hSn!);

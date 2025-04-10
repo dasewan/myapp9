@@ -35,22 +35,22 @@ class _SettingPageState extends State<SettingPage> {
           return Column(
             children: <Widget>[
               Gaps.vGap5,
-              if (Helper.isLoggedIn())
-                ClickItem(
-                title: 'Change Password',
-                onTap: () => NavigatorUtils.push(context, LoginRouter.updatePasswordPage),
-              ),
+              // if (Helper.isLoggedIn())
+              //   ClickItem(
+              //   title: 'Change Password',
+              //   onTap: () => NavigatorUtils.push(context, LoginRouter.updatePasswordPage),
+              // ),
               if (Device.isMobile)
                 ClickItem(
                   title: 'Clear Cache',
                   content: '23.5MB',
                   onTap: () {},
                 ),
-              if (Device.isMobile)
-                ClickItem(
-                  title: 'Check for Updates',
-                  onTap: _showUpdateDialog,
-                ),
+              // if (Device.isMobile)
+              //   ClickItem(
+              //     title: 'Check for Updates',
+              //     onTap: _showUpdateDialog,
+              //   ),
               Helper.isLoggedIn()
                   ? ClickItem(
                       title: 'Log Out',

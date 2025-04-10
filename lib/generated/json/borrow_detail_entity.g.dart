@@ -251,10 +251,10 @@ BorrowDetailDataPeriods $BorrowDetailDataPeriodsFromJson(
   if (jExpectViolateFee != null) {
     borrowDetailDataPeriods.jExpectViolateFee = jExpectViolateFee;
   }
-  final int? kExpectOverdueFee = jsonConvert.convert<int>(
-      json['k_expect_overdue_fee']);
-  if (kExpectOverdueFee != null) {
-    borrowDetailDataPeriods.kExpectOverdueFee = kExpectOverdueFee;
+  final int? kExpectOverdueAmount = jsonConvert.convert<int>(
+      json['k_expect_overdue_amount']);
+  if (kExpectOverdueAmount != null) {
+    borrowDetailDataPeriods.kExpectOverdueAmount = kExpectOverdueAmount;
   }
   final int? nPaidAmount = jsonConvert.convert<int>(json['n_paid_amount']);
   if (nPaidAmount != null) {
@@ -323,7 +323,7 @@ Map<String, dynamic> $BorrowDetailDataPeriodsToJson(
   data['h_expect_interest'] = entity.hExpectInterest;
   data['i_expect_service_fee'] = entity.iExpectServiceFee;
   data['j_expect_violate_fee'] = entity.jExpectViolateFee;
-  data['k_expect_overdue_fee'] = entity.kExpectOverdueFee;
+  data['k_expect_overdue_amount'] = entity.kExpectOverdueAmount;
   data['n_paid_amount'] = entity.nPaidAmount;
   data['o_paid_borrow_amount'] = entity.oPaidBorrowAmount;
   data['p_paid_interest'] = entity.pPaidInterest;
@@ -350,7 +350,7 @@ extension BorrowDetailDataPeriodsExtension on BorrowDetailDataPeriods {
     int? hExpectInterest,
     int? iExpectServiceFee,
     int? jExpectViolateFee,
-    int? kExpectOverdueFee,
+    int? kExpectOverdueAmount,
     int? nPaidAmount,
     int? oPaidBorrowAmount,
     int? pPaidInterest,
@@ -375,7 +375,7 @@ extension BorrowDetailDataPeriodsExtension on BorrowDetailDataPeriods {
       ..hExpectInterest = hExpectInterest ?? this.hExpectInterest
       ..iExpectServiceFee = iExpectServiceFee ?? this.iExpectServiceFee
       ..jExpectViolateFee = jExpectViolateFee ?? this.jExpectViolateFee
-      ..kExpectOverdueFee = kExpectOverdueFee ?? this.kExpectOverdueFee
+      ..kExpectOverdueAmount = kExpectOverdueAmount ?? this.kExpectOverdueAmount
       ..nPaidAmount = nPaidAmount ?? this.nPaidAmount
       ..oPaidBorrowAmount = oPaidBorrowAmount ?? this.oPaidBorrowAmount
       ..pPaidInterest = pPaidInterest ?? this.pPaidInterest

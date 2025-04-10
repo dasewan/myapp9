@@ -34,7 +34,8 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> with BasePageMixin<ShopPage, ShopPagePresenter>, AutomaticKeepAliveClientMixin<ShopPage> implements ShopIMvpView {
-  final List<String> _menuTitle = ['All Applications', 'Repayment', 'Credit Score', 'Invite History'];
+  // final List<String> _menuTitle = ['All Applications', 'Repayment', 'Credit Score', 'Invite History'];
+  final List<String> _menuTitle = ['All Applications', 'Repayment', 'Credit Score'];
   final List<String> _menuImage = ['zhls', 'zjgl', 'credit_score', 'invite'];
   final List<double> _menuImageWidth = [34.0, 34.0, 28.0, 26.0];
   final List<String> _menuDarkImage = ['dark_zhls', 'dark_zjgl', 'dark_txzh', 'dark_txzh'];
@@ -290,7 +291,7 @@ class _ShopPageState extends State<ShopPage> with BasePageMixin<ShopPage, ShopPa
                           ),
                         ),
                         // Gaps.vGap4,
-                        LoadAssetImage('shop/share4'),
+                        // LoadAssetImage('shop/share4'),
                       ],
                     ),
                   ),
@@ -425,8 +426,8 @@ class _ShopFunctionModule extends StatelessWidget {
       shrinkWrap: true,
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: data.length,
         childAspectRatio: 1.18,
       ),
       itemCount: data.length,

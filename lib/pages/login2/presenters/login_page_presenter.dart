@@ -27,9 +27,10 @@ class LoginPagePresenter extends BasePagePresenter<LoginIMvpView> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-/*      await MyPermission().myGeolocator(view: view);
       loginPageInfo = SpUtil.getObj(Constant.loginPageInfo,(v) => IndexDataLoginPageInfo.fromJson(v as Map<String, dynamic>))!;
       view.setLoginPageInfo(loginPageInfo);
+/*      await MyPermission().myGeolocator(view: view);
+
       deviceDynamicInfo = await Helper.getDeviceInfo(view, fetchDynamic: true, fetchStatic: false);
       deviceStaticInfo = await Helper.getDeviceInfo(view, fetchDynamic: false, fetchStatic: true);*/
     });

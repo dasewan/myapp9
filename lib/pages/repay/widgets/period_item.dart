@@ -111,7 +111,7 @@ class PeriodItem extends StatelessWidget {
               ),
             ),
             Text(
-              '\$${period.gExpectBorrowAmount! + period.oPaidBorrowAmount!}',
+              Utils.formatPrice2(period.gExpectBorrowAmount! + period.oPaidBorrowAmount!),
               style: TextStyles.textBold14,
             ),
           ],
@@ -135,7 +135,7 @@ class PeriodItem extends StatelessWidget {
               ),
             ),
             Text(
-              '\$${period.aWInterest!}',
+              Utils.formatPrice2(period.aWInterest!),
               style: TextStyles.textBold14,
             ),
           ],
@@ -159,7 +159,7 @@ class PeriodItem extends StatelessWidget {
               ),
             ),
             Text(
-              '\$${period.aXServiceFee!}',
+              Utils.formatPrice2(period.aXServiceFee!),
               style: TextStyles.textBold14,
             ),
           ],
@@ -209,7 +209,7 @@ class PeriodItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '\$${period.kExpectOverdueFee! - period.sPaidOverdueAmount!}',
+                    Utils.formatPrice2(period.kExpectOverdueAmount! - period.sPaidOverdueAmount!),
                     style: TextStyles.textBold14,
                   ),
                 ],
@@ -235,7 +235,7 @@ class PeriodItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '- \$${period.nPaidAmount!}',
+                    '-${Utils.formatPrice2(period.nPaidAmount!)}',
                     style: const TextStyle(
                       fontSize: Dimens.font_sp14,
                       color: Colors.green,
@@ -264,7 +264,7 @@ class PeriodItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '- \$${period.aUCurrentDeductionFee!}',
+                    '- ${Utils.formatPrice2(period.aUCurrentDeductionFee!)}',
                     style: const TextStyle(
                       fontSize: Dimens.font_sp14,
                       color: Colors.green,
@@ -290,7 +290,7 @@ class PeriodItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '\$${period.fExpectRepayTotalAmount! - period.pPaidInterest! - period.qPaidServiceFee! - period.sPaidOverdueAmount! - period.oPaidBorrowAmount!}',
+                  Utils.formatPrice2(period.fExpectRepayTotalAmount! - period.pPaidInterest! - period.qPaidServiceFee! - period.sPaidOverdueAmount! - period.oPaidBorrowAmount!),
                   style: TextStyles.textBold14,
                 ),
               ],
