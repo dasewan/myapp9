@@ -1,4 +1,4 @@
-# ParaLoan
+# Kaka Loan Market
 
 <img src="preview/logo.jpg"/>
 
