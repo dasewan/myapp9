@@ -122,6 +122,27 @@ class OrderItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              if (item.jStatus == 90 || item.jStatus == 60)
+                Row(
+                  children: [
+                    SizedBox(
+                      // width: 120,
+                      child: Text(
+                        'Due Date',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTextStyle3,
+                      ),
+                    ),
+                    Text(
+                      DateFormat('yyyy-MM-dd HH:mm').format(
+                          DateTime.parse(item.qExpectRepayTime.nullSafe)),
+                    )
+                  ],
+                )
+              else
+                Gaps.empty,
+              Gaps.vGap4,
               Row(
                 children: [
                   SizedBox(
@@ -155,45 +176,25 @@ class OrderItem extends StatelessWidget {
                   Text(Utils.formatPrice2(item.mBorrowAmount!))
                 ],
               ),
-              Gaps.vGap4,
-              Row(
-                children: [
-                  SizedBox(
-                    // width: 120,
-                    child: Text(
-                      'Application Date：',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTextStyle3,
-                    ),
-                  ),
-                  Text(
-                    DateFormat('yyyy-MM-dd HH:mm')
-                        .format(DateTime.parse(item.createdAt.nullSafe)),
-                  )
-                ],
-              ),
-              if (item.jStatus == 90 || item.jStatus == 60)
-                Gaps.vGap4
-              else
-                Gaps.empty,
-              if (item.jStatus == 60 || item.jStatus == 90)
-                Row(
-                  children: [
-                    SizedBox(
-                      // width: 120,
-                      child: Text(
-                        'Disbursement Date: ',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: textTextStyle3,
-                      ),
-                    ),
-                    Text(Utils.formatPrice2(item.mBorrowAmount!))
-                  ],
-                )
-              else
-                Gaps.empty,
+              // Gaps.vGap4,
+              // Row(
+              //   children: [
+              //     SizedBox(
+              //       // width: 120,
+              //       child: Text(
+              //         'Application Date：',
+              //         maxLines: 1,
+              //         overflow: TextOverflow.ellipsis,
+              //         style: textTextStyle3,
+              //       ),
+              //     ),
+              //     Text(
+              //       DateFormat('yyyy-MM-dd HH:mm')
+              //           .format(DateTime.parse(item.createdAt.nullSafe)),
+              //     )
+              //   ],
+              // ),
+
               if (item.jStatus == 90 || item.jStatus == 60)
                 Gaps.vGap4
               else
@@ -210,7 +211,7 @@ class OrderItem extends StatelessWidget {
                         style: textTextStyle3,
                       ),
                     ),
-                    Text(Utils.formatPrice2(item.mBorrowAmount!))
+                    Text(Utils.formatPrice2(item.pLoanAmount!))
                   ],
                 )
               else
@@ -231,7 +232,7 @@ class OrderItem extends StatelessWidget {
                         style: textTextStyle3,
                       ),
                     ),
-                    Text(Utils.formatPrice2(item.mBorrowAmount!))
+                    Text(item.aMBankcard!)
                   ],
                 )
               else
@@ -262,32 +263,33 @@ class OrderItem extends StatelessWidget {
                 )
               else
                 Gaps.empty,
-              item.jStatus == 90 || item.jStatus == 60
-                  ? Row(
-                      children: [
-                        SizedBox(
-                          // width: 120,
-                          child: Text(
-                            'Due Day：',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: textTextStyle3,
-                          ),
-                        ),
-                        Text(
-                          DateFormat('yyyy-MM-dd HH:mm').format(
-                              DateTime.parse(item.qExpectRepayTime.nullSafe)),
-                        )
-                      ],
+
+              if (item.jStatus == 60 || item.jStatus == 90)
+                Row(
+                  children: [
+                    SizedBox(
+                      // width: 120,
+                      child: Text(
+                        'Disbursement Date: ',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTextStyle3,
+                      ),
+                    ),
+                    Text(
+                      DateFormat('yyyy-MM-dd HH:mm')
+                          .format(DateTime.parse(item.oLoanTime.nullSafe)),
                     )
-                  : Gaps.empty,
+                  ],
+                )
+              else
+                Gaps.empty,
             ],
           ),
         ),
-        item.jStatus == Constant.borrow_overdue ||
-                item.jStatus == Constant.borrow_outstanding
-            ? SizedBox(
-                height: 84,
+        if (item.jStatus == Constant.borrow_overdue ||
+                item.jStatus == Constant.borrow_outstanding) SizedBox(
+                height: 124,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -301,7 +303,7 @@ class OrderItem extends StatelessWidget {
                     ),
                     const Expanded(child: Gaps.empty),
                     SizedBox(
-                      height: 24,
+                      height: 34,
                       child: MyButton(
                         minWidth: 1,
                         minHeight: 1,
@@ -318,8 +320,7 @@ class OrderItem extends StatelessWidget {
                     )
                   ],
                 ),
-              )
-            : Column(
+              ) else Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[

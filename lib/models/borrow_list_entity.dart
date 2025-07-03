@@ -50,11 +50,11 @@ class BorrowListData {
   @JSONField(name: "a_p_period_count")
   int? aPPeriodCount;
   @JSONField(name: "o_loan_time")
-  int? oLoanTime;
+  String? oLoanTime;
   @JSONField(name: "p_loan_amount")
   int? pLoanAmount;
   @JSONField(name: "a_m_bankcard")
-  int? aMBankcard;
+  String? aMBankcard;
   @JSONField(name: "created_at")
   String? createdAt;
 

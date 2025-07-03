@@ -25,7 +25,7 @@ class IndexNewPagePresenter extends BasePagePresenter<IndexNewIMvpView> {
       location2();
       int currentTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
       int lastIndexFetchAt = SpUtil.getInt(Constant.lastIndexFetchAt, defValue: currentTimeInSeconds)!;
-      if (currentTimeInSeconds == lastIndexFetchAt || currentTimeInSeconds - lastIndexFetchAt > 30) {
+      if (currentTimeInSeconds == lastIndexFetchAt || currentTimeInSeconds - lastIndexFetchAt > 20) {
         indexNew(true);
       }
     });

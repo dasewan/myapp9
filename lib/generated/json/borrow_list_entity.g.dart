@@ -129,6 +129,18 @@ BorrowListData $BorrowListDataFromJson(Map<String, dynamic> json) {
   if (aPPeriodCount != null) {
     borrowListData.aPPeriodCount = aPPeriodCount;
   }
+  final String? oLoanTime = jsonConvert.convert<String>(json['o_loan_time']);
+  if (oLoanTime != null) {
+    borrowListData.oLoanTime = oLoanTime;
+  }
+  final int? pLoanAmount = jsonConvert.convert<int>(json['p_loan_amount']);
+  if (pLoanAmount != null) {
+    borrowListData.pLoanAmount = pLoanAmount;
+  }
+  final String? aMBankcard = jsonConvert.convert<String>(json['a_m_bankcard']);
+  if (aMBankcard != null) {
+    borrowListData.aMBankcard = aMBankcard;
+  }
   final String? createdAt = jsonConvert.convert<String>(json['created_at']);
   if (createdAt != null) {
     borrowListData.createdAt = createdAt;
@@ -149,6 +161,9 @@ Map<String, dynamic> $BorrowListDataToJson(BorrowListData entity) {
   data['y_show_extend_btn'] = entity.yShowExtendBtn;
   data['a_t_max_extend_days'] = entity.aTMaxExtendDays;
   data['a_p_period_count'] = entity.aPPeriodCount;
+  data['o_loan_time'] = entity.oLoanTime;
+  data['p_loan_amount'] = entity.pLoanAmount;
+  data['a_m_bankcard'] = entity.aMBankcard;
   data['created_at'] = entity.createdAt;
   return data;
 }
@@ -166,6 +181,9 @@ extension BorrowListDataExtension on BorrowListData {
     int? yShowExtendBtn,
     int? aTMaxExtendDays,
     int? aPPeriodCount,
+    String? oLoanTime,
+    int? pLoanAmount,
+    String? aMBankcard,
     String? createdAt,
   }) {
     return BorrowListData()
@@ -180,6 +198,9 @@ extension BorrowListDataExtension on BorrowListData {
       ..yShowExtendBtn = yShowExtendBtn ?? this.yShowExtendBtn
       ..aTMaxExtendDays = aTMaxExtendDays ?? this.aTMaxExtendDays
       ..aPPeriodCount = aPPeriodCount ?? this.aPPeriodCount
+      ..oLoanTime = oLoanTime ?? this.oLoanTime
+      ..pLoanAmount = pLoanAmount ?? this.pLoanAmount
+      ..aMBankcard = aMBankcard ?? this.aMBankcard
       ..createdAt = createdAt ?? this.createdAt;
   }
 }
