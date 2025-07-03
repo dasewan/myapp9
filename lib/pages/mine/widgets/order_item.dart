@@ -39,7 +39,10 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle? textTextStyle3 = Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: Dimens.font_sp14, color: Colors.grey[500]);
+    final TextStyle? textTextStyle3 = Theme.of(context)
+        .textTheme
+        .bodyMedium
+        ?.copyWith(fontSize: Dimens.font_sp14, color: Colors.grey[500]);
     Map<int, Color> statusColor = {
       //审核中 1
       Constant.MACHINE_WAIT: Colors.grey,
@@ -165,29 +168,100 @@ class OrderItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(item.createdAt.nullSafe)),
+                    DateFormat('yyyy-MM-dd HH:mm')
+                        .format(DateTime.parse(item.createdAt.nullSafe)),
                   )
                 ],
               ),
-              item.jStatus == 80 || item.jStatus == 90 || item.jStatus == 60 ? Gaps.vGap4 : Gaps.empty,
-              item.jStatus == 80
-                  ? Row(
-                      children: [
-                        SizedBox(
-                          // width: 120,
-                          child: Text(
-                            'Settled Time：',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: textTextStyle3,
-                          ),
-                        ),
-                        Text(
-                          DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(item.tSettledTime.nullSafe)),
-                        )
-                      ],
+              if (item.jStatus == 90 || item.jStatus == 60)
+                Gaps.vGap4
+              else
+                Gaps.empty,
+              if (item.jStatus == 60 || item.jStatus == 90)
+                Row(
+                  children: [
+                    SizedBox(
+                      // width: 120,
+                      child: Text(
+                        'Disbursement Date: ',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTextStyle3,
+                      ),
+                    ),
+                    Text(Utils.formatPrice2(item.mBorrowAmount!))
+                  ],
+                )
+              else
+                Gaps.empty,
+              if (item.jStatus == 90 || item.jStatus == 60)
+                Gaps.vGap4
+              else
+                Gaps.empty,
+              if (item.jStatus == 60 || item.jStatus == 90)
+                Row(
+                  children: [
+                    SizedBox(
+                      // width: 120,
+                      child: Text(
+                        'Received Amount: ',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTextStyle3,
+                      ),
+                    ),
+                    Text(Utils.formatPrice2(item.mBorrowAmount!))
+                  ],
+                )
+              else
+                Gaps.empty,
+              if (item.jStatus == 90 || item.jStatus == 60)
+                Gaps.vGap4
+              else
+                Gaps.empty,
+              if (item.jStatus == 60 || item.jStatus == 90)
+                Row(
+                  children: [
+                    SizedBox(
+                      // width: 120,
+                      child: Text(
+                        'Mobile Money Number: ',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTextStyle3,
+                      ),
+                    ),
+                    Text(Utils.formatPrice2(item.mBorrowAmount!))
+                  ],
+                )
+              else
+                Gaps.empty,
+              if (item.jStatus == 80 ||
+                  item.jStatus == 90 ||
+                  item.jStatus == 60)
+                Gaps.vGap4
+              else
+                Gaps.empty,
+              if (item.jStatus == 80)
+                Row(
+                  children: [
+                    SizedBox(
+                      // width: 120,
+                      child: Text(
+                        'Settled Time：',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: textTextStyle3,
+                      ),
+                    ),
+                    Text(
+                      DateFormat('yyyy-MM-dd HH:mm')
+                          .format(DateTime.parse(item.tSettledTime.nullSafe)),
                     )
-                  : Gaps.empty,
+                  ],
+                )
+              else
+                Gaps.empty,
               item.jStatus == 90 || item.jStatus == 60
                   ? Row(
                       children: [
@@ -201,7 +275,8 @@ class OrderItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(item.qExpectRepayTime.nullSafe)),
+                          DateFormat('yyyy-MM-dd HH:mm').format(
+                              DateTime.parse(item.qExpectRepayTime.nullSafe)),
                         )
                       ],
                     )
@@ -209,7 +284,8 @@ class OrderItem extends StatelessWidget {
             ],
           ),
         ),
-        item.jStatus == Constant.borrow_overdue || item.jStatus == Constant.borrow_outstanding
+        item.jStatus == Constant.borrow_overdue ||
+                item.jStatus == Constant.borrow_outstanding
             ? SizedBox(
                 height: 84,
                 child: Column(
@@ -218,7 +294,10 @@ class OrderItem extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       statusText[item.jStatus]!,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(color: statusColor[item.jStatus]),
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleSmall
+                          ?.copyWith(color: statusColor[item.jStatus]),
                     ),
                     const Expanded(child: Gaps.empty),
                     SizedBox(
@@ -231,7 +310,8 @@ class OrderItem extends StatelessWidget {
                         fontSize: Dimens.font_sp14,
                         backgroundColor: Colors.redAccent[700],
                         onPressed: () {
-                          NavigatorUtils.push(context, '${RepayRouter.repay}?productId=${item.dProductId}');
+                          NavigatorUtils.push(context,
+                              '${RepayRouter.repay}?productId=${item.dProductId}');
                         },
                         text: 'Repay',
                       ),
@@ -244,11 +324,13 @@ class OrderItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    item.jStatus == Constant.borrow_cleared || item.jStatus == Constant.borrow_closed
+                    item.jStatus == Constant.borrow_cleared ||
+                            item.jStatus == Constant.borrow_closed
                         ? statusText[item.jStatus]!
                         : statusText[item.kSubStatus]!,
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: item.jStatus == Constant.borrow_cleared || item.jStatus == Constant.borrow_closed
+                        color: item.jStatus == Constant.borrow_cleared ||
+                                item.jStatus == Constant.borrow_closed
                             ? statusColor[item.jStatus]!
                             : statusColor[item.kSubStatus]!),
                   ),

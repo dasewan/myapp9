@@ -25,7 +25,7 @@ class IndexNewPagePresenter extends BasePagePresenter<IndexNewIMvpView> {
       location2();
       int currentTimeInSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
       int lastIndexFetchAt = SpUtil.getInt(Constant.lastIndexFetchAt, defValue: currentTimeInSeconds)!;
-      if (currentTimeInSeconds == lastIndexFetchAt || currentTimeInSeconds - lastIndexFetchAt > 10) {
+      if (currentTimeInSeconds == lastIndexFetchAt || currentTimeInSeconds - lastIndexFetchAt > 30) {
         indexNew(true);
       }
     });
@@ -279,6 +279,7 @@ class IndexNewPagePresenter extends BasePagePresenter<IndexNewIMvpView> {
           view.showPopupOverlay(reponse.data!.aUser!.iIndexAction!, reponse.data!.remind!);
         }
         view.getContext().read<UserProvider>().setIndexAction(reponse.data!.aUser!.iIndexAction!);
+        view.scroll();
       }
     }, onError: (_, __) {
       /// 加载失败

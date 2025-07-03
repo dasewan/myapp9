@@ -18,4 +18,5 @@ abstract class IndexNewIMvpView implements IMvpView {
   void goSign(int productId);
 
   void goRepay(int productId);
+  void scroll();
 }

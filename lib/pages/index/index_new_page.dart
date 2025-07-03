@@ -154,9 +154,7 @@ class _IndexNewPageState extends State<IndexNewPage> with BasePageMixin<IndexNew
       }
     });
 
-    // WidgetsBinding.instance!.addPostFrameCallback((_) {
-    //   _indexNewPagePresenter.index(false);
-    // });
+
   }
 
 /*  @override
@@ -199,6 +197,23 @@ class _IndexNewPageState extends State<IndexNewPage> with BasePageMixin<IndexNew
   @override
   void goSwipper() {
     NavigatorUtils.push(context, VerifyRouter.swipper);
+  }
+    @override
+  void scroll() {
+          // 自动滚动到最后
+      _scrollController2.animateTo(
+        4000,
+        duration: const Duration(milliseconds: 8000),
+        curve: Curves.easeInOut,
+      );
+
+          Future.delayed(Duration(milliseconds: 4000), () {
+      _scrollController2.animateTo(
+        0.0,
+        curve: Curves.easeInOut,
+        duration: const Duration(milliseconds: 2000),
+      );
+    });
   }
 
   @override

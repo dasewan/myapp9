@@ -49,6 +49,12 @@ class BorrowListData {
   int? aTMaxExtendDays;
   @JSONField(name: "a_p_period_count")
   int? aPPeriodCount;
+  @JSONField(name: "o_loan_time")
+  int? oLoanTime;
+  @JSONField(name: "p_loan_amount")
+  int? pLoanAmount;
+  @JSONField(name: "a_m_bankcard")
+  int? aMBankcard;
   @JSONField(name: "created_at")
   String? createdAt;
 
